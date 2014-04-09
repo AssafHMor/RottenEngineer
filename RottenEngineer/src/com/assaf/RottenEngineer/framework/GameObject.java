@@ -7,6 +7,8 @@ public abstract class GameObject {
 	protected float x, y;
 	protected float velocityX = 0 , velocityY = 0;
 	protected ObjectId id;
+	protected boolean falling = true;
+	protected boolean jumping = false;
 	
 	public GameObject (float x, float y, ObjectId id){
 		this.x = x;
@@ -86,8 +88,40 @@ public abstract class GameObject {
 	public void setVelocityY(float velocityY){
 		this.velocityY = velocityY;
 	}
-	
+	/**
+	 * return the objects ID
+	 * @return
+	 */
 	public ObjectId getId(){
 		return id;
 	}
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isFalling() {
+		return falling;
+	}
+	/**
+	 * 
+	 * @param falling
+	 */
+	public void setFalling(boolean falling) {
+		this.falling = falling;
+	}
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isJumping() {
+		return jumping;
+	}
+	/**
+	 * 
+	 * @param jumping
+	 */
+	public void setJumping(boolean jumping) {
+		this.jumping = jumping;
+	}
+	
 }

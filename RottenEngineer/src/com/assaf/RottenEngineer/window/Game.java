@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 
+import com.assaf.RottenEngineer.framework.KeyboardInput;
 import com.assaf.RottenEngineer.framework.ObjectId;
 import com.assaf.RottenEngineer.objects.Player;
 
@@ -26,9 +27,11 @@ public class Game extends Canvas implements Runnable {
 		WIDTH = getWidth();
 		HEIGHT = getHeight();
 		obejectHandler = new ObjectHandler();
-		obejectHandler.addOject(new Player(100,100,ObjectId.Player));
+		obejectHandler.addOject(new Player(100,100,ObjectId.Player,obejectHandler));
 		obejectHandler.createLevel();
+		this.addKeyListener(new KeyboardInput(obejectHandler));
 	}
+	
 	
 	public synchronized void start(){
 		if(running)
@@ -83,7 +86,7 @@ public class Game extends Canvas implements Runnable {
 		
 		
 		
-		graphic.setColor(Color.BLUE);
+		graphic.setColor(Color.black);
 		graphic.fillRect(0, 0, getWidth(), getHeight());
 		obejectHandler.render(graphic);
 		
